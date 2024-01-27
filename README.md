@@ -11,7 +11,7 @@ Python Detailed List App is a Python application designed to help users keep tra
 <br />
 <div align="center">
   <a href="https://github.com/prince-akeem/List-App">
-    <img src="images/pythonlistapplogo.webp" alt="Logo" width="80" height="80">
+    <img src="images/pythonlistapplogo.webp" alt="Logo" width="500" height="500">
   </a>
 </div>
 
@@ -44,8 +44,7 @@ The Python Detailed List App comes with several key features:
 ## Roadmap
 
 - [x] Add Changelog and update README.md
-- [ ] Add back to top links
-- [ ] Add Additional Templates w/ Examples
+- [x] Add GUI to List App
 - [ ] Add "components" document to easily copy & paste sections of the readme
 - [ ] Multi-language Support
     - [ ] Chinese
@@ -67,6 +66,7 @@ Use this space to list resources you find helpful and would like to give credit 
 * [Malven's Grid Cheatsheet](https://grid.malven.co/)
 * [Img Shields](https://shields.io)
 * [Best-README-template](https://github.com/othneildrew/Best-README-Template)
+* [customTkinter](https://customtkinter.tomschimansky.com)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
