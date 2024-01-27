@@ -1,5 +1,6 @@
 import customtkinter as customtkinter
 from HeaderFrame import MenuFrame
+from AccListFrame import AccListFrame
 from FooterFrame import FooterFrame
 
 # Sets the appearance of the window
@@ -18,14 +19,6 @@ class ListFrame(customtkinter.CTkScrollableFrame):
         self.label = customtkinter.CTkLabel(self)
         self.label.grid(row=0, column=0, padx=20)
 
-# class FooterFrame(customtkinter.CTkFrame):
-#     def __init__(self, master, **kwargs):
-#         super().__init__(master, **kwargs)
-
-#         # add widgets onto the frame below, for example:
-#         self.label = customtkinter.CTkLabel(self)
-#         self.label.grid(row=0, column=0, padx=20)
-
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
@@ -42,7 +35,7 @@ class App(customtkinter.CTk):
         self.top_frame = MenuFrame(master=self, corner_radius=0)
         self.top_frame.grid(row=0, sticky="nsew")
 
-        self.list_frame = ListFrame(master=self, corner_radius=0)
+        self.list_frame = AccListFrame(master=self)
         self.list_frame.grid(row=1, sticky="nsew")
 
         self.foot_frame = FooterFrame(master=self, corner_radius=0)
