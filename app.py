@@ -6,10 +6,10 @@ from FooterFrame import FooterFrame
 # Sets the appearance of the window
 # Supported modes : Light, Dark, System
 # "system" sets the appearance mode to
-customtkinter.set_appearance_mode("system")
+customtkinter.set_appearance_mode("Dark")
 
 # Supported themes : green, dark-blue, blue
-customtkinter.set_default_color_theme("green")
+customtkinter.set_default_color_theme("blue")
 
 class ListFrame(customtkinter.CTkScrollableFrame):
     def __init__(self, master, **kwargs):
@@ -32,11 +32,11 @@ class App(customtkinter.CTk):
 
         self.geometry(f"{window_width}x{window_height}+{center_x}+{center_y}")
 
-        self.top_frame = MenuFrame(master=self, corner_radius=0)
-        self.top_frame.grid(row=0, sticky="nsew")
-
         self.list_frame = AccListFrame(master=self)
         self.list_frame.grid(row=1, sticky="nsew")
+
+        self.top_frame = MenuFrame(master=self, list_frame=self.list_frame, corner_radius=0)
+        self.top_frame.grid(row=0, sticky="nsew")
 
         self.foot_frame = FooterFrame(master=self, corner_radius=0)
         self.foot_frame.grid(row=2, sticky="nsew")

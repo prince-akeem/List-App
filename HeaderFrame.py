@@ -4,8 +4,9 @@ from tinydb import TinyDB
 import threading
 
 class MenuFrame(customtkinter.CTkFrame):
-    def __init__(self, master, **kwargs):
+    def __init__(self, master, list_frame, **kwargs):
         super().__init__(master, **kwargs)
+        self.list_frame = list_frame
 
         self.rowconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
@@ -63,7 +64,7 @@ class MenuFrame(customtkinter.CTkFrame):
         db = TinyDB('ListAppDB.json')
         new_id = len(db.all()) + 1
 
-        db.insert({'ID': new_id,
+        db.insert({'Id': new_id,
             'Username':self.entry_username.get(),
             'Password':self.entry_password.get(),
             'Type':self.entry_type.get(),
@@ -72,6 +73,7 @@ class MenuFrame(customtkinter.CTkFrame):
         # Show success message and reset fields
         self.show_message("Account added successfully!", message_color="green", display_time=3)
         self.reset_entry_fields()
+        self.list_frame.refresh_data()
 
     def reset_entry_fields(self):
         """ Reset all entry fields """

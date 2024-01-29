@@ -24,7 +24,7 @@ class FooterFrame(customtkinter.CTkFrame):
         social_icons_frame.grid(row=0, column=2, padx=0, sticky="e")
 
         # Instagram Icon
-        self.create_social_icon("Instagram", "https://www.instagram.com/prince-akeem", "images/instagram_icon.png", social_icons_frame)
+        self.create_social_icon("Instagram", "https://www.instagram.com/prince_a_akeem", "images/instagram_icon.png", social_icons_frame)
 
         # GitHub Icon
         self.create_social_icon("Github", "https://github.com/prince-akeem", "images/github_icon.png", social_icons_frame)
