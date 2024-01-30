@@ -29,23 +29,26 @@ The Python Detailed List App comes with several key features:
 
 ### Screenshots
 
-- **Add Account**
+- **Dark Mode**
 
-  ![Add Account Screenshot](add_screenshot_link)
+  <div align="center">
+    <a href="https://github.com/prince-akeem/List-App">
+      <img src="images/DarkScreenShot.png" alt="Picture of application dark mode">
+    </a>
+  </div>
 
-- **Delete Account**
+- **Light Mode**
 
-  ![Delete Account Screenshot](delete_screenshot_link)
-
-- **Update Account**
-
-  ![Update Account Screenshot](update_screenshot_link)
+  <div align="center">
+    <a href="https://github.com/prince-akeem/List-App">
+      <img src="images/LightScreenShot.png" alt="Picture of application light mode">
+    </a>
+  </div>
 
 ## Roadmap
 
 - [x] Add Changelog and update README.md
 - [x] Add GUI to List App
-- [ ] Add "components" document to easily copy & paste sections of the readme
 - [ ] Multi-language Support
     - [ ] Chinese
     - [ ] Spanish
