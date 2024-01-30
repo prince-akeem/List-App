@@ -1,5 +1,4 @@
 import customtkinter
-import tkinter as tk
 from tinydb import TinyDB
 import threading
 
@@ -7,6 +6,7 @@ class MenuFrame(customtkinter.CTkFrame):
     def __init__(self, master, list_frame, **kwargs):
         super().__init__(master, **kwargs)
         self.list_frame = list_frame
+        self.my_font = customtkinter.CTkFont(family="Helvetica", size=16, weight='bold')
 
         self.rowconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
@@ -16,28 +16,30 @@ class MenuFrame(customtkinter.CTkFrame):
 
         # Header row
         self.label = customtkinter.CTkLabel(self,
-                    text="Account List App that is not a Password Manager")
+                    text="Account List App, Not a Password Manager",
+                    font=customtkinter.CTkFont(family="Helvetica", size=24, underline=True, weight='bold'))
         self.label.grid(row=0, columnspan=num_cols, padx=20)
 
         # New Account Row
-        self.label = customtkinter.CTkLabel(self, text="Enter Account details -> ")
+        self.label = customtkinter.CTkLabel(self, text="Enter Account details -> ", font=self.my_font)
         self.label.grid(column=0, row=1, pady=1)
-        self.entry_username = customtkinter.CTkEntry(self, width=120, placeholder_text="Username")
+        self.entry_username = customtkinter.CTkEntry(self, width=220, placeholder_text="Username", font=self.my_font)
         self.entry_username.grid(column=1, row=1, pady=1)
-        self.entry_password = customtkinter.CTkEntry(self, width=120, placeholder_text="Password")
+        self.entry_password = customtkinter.CTkEntry(self, width=180, placeholder_text="Password", font=self.my_font)
         self.entry_password.grid(column=2, row=1, pady=1)
-        self.entry_type = customtkinter.CTkEntry(self, width=120, placeholder_text="Type")
+        self.entry_type = customtkinter.CTkEntry(self, width=180, placeholder_text="Type", font=self.my_font)
         self.entry_type.grid(column=3, row=1, pady=1)
-        self.entry_status = customtkinter.CTkEntry(self, width=120, placeholder_text="Status")
+        self.entry_status = customtkinter.CTkEntry(self, width=180, placeholder_text="Status", font=self.my_font)
+        self.entry_status.bind('<Return>', lambda event=None: self.submit())
         self.entry_status.grid(column=4, row=1, pady=1)
 
         # Add Account button
-        self.addAcc_button = customtkinter.CTkButton(self, text="Add Account", command=self.submit)
+        self.addAcc_button = customtkinter.CTkButton(self, text="Add Account", command=self.submit, font=self.my_font)
         self.addAcc_button.grid(column=5, row=1)
 
     def show_message(self, message, message_color="red", display_time=3.0):
         """ Show a timed message (error or success) """
-        message_label = customtkinter.CTkLabel(self, text=message, text_color=message_color)
+        message_label = customtkinter.CTkLabel(self, text=message, text_color=message_color, font=self.my_font)
         message_label.grid(column=0, row=2, columnspan=6, sticky="ew", pady=(0, 10))
 
         # Hide the message after a certain time (e.g., 3 seconds)
@@ -62,7 +64,11 @@ class MenuFrame(customtkinter.CTkFrame):
 
         # Proceed with database insertion if all checks pass
         db = TinyDB('ListAppDB.json')
-        new_id = len(db.all()) + 1
+        # new_id = len(db.all()) + 1
+        existing_ids = {item['Id'] for item in db.all()}
+        new_id = 1
+        while new_id in existing_ids:
+            new_id += 1
 
         db.insert({'Id': new_id,
             'Username':self.entry_username.get(),
@@ -76,11 +82,10 @@ class MenuFrame(customtkinter.CTkFrame):
         self.list_frame.refresh_data()
 
     def reset_entry_fields(self):
-        """ Reset all entry fields """
-        self.entry_username.delete(0, tk.END)
-        self.entry_password.delete(0, tk.END)
-        self.entry_type.delete(0, tk.END)
-        self.entry_status.delete(0, tk.END)
+        self.entry_username.delete(0, customtkinter.END)
+        self.entry_password.delete(0, customtkinter.END)
+        self.entry_type.delete(0, customtkinter.END)
+        self.entry_status.delete(0, customtkinter.END)
 
 
 
