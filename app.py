@@ -6,18 +6,10 @@ from FooterFrame import FooterFrame
 # Sets the appearance of the window
 # Supported modes : Light, Dark, System
 # "system" sets the appearance mode to
-customtkinter.set_appearance_mode("Dark")
+customtkinter.set_appearance_mode("System")
 
 # Supported themes : green, dark-blue, blue
-customtkinter.set_default_color_theme("blue")
-
-class ListFrame(customtkinter.CTkScrollableFrame):
-    def __init__(self, master, **kwargs):
-        super().__init__(master, **kwargs)
-
-        # add widgets onto the frame below, for example:
-        self.label = customtkinter.CTkLabel(self)
-        self.label.grid(row=0, column=0, padx=20)
+customtkinter.set_default_color_theme("green")
 
 class App(customtkinter.CTk):
     def __init__(self):
@@ -31,6 +23,7 @@ class App(customtkinter.CTk):
         center_x, center_y = int(screen_width / 2 - window_width / 2), int(screen_height / 2 - window_height / 2)
 
         self.geometry(f"{window_width}x{window_height}+{center_x}+{center_y}")
+        self.title("List App v1.0.0")
 
         self.list_frame = AccListFrame(master=self)
         self.list_frame.grid(row=1, sticky="nsew")
