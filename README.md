@@ -24,8 +24,13 @@ No installation required, simply download the application from the [Releases Pag
 The Python Detailed List App comes with several key features:
 
 - **Add**: Easily add new accounts to your list.
+  - **Hotkey**: Press 'tab' will move to the next entry, press 'enter' on Status entry to confirm add.
 - **Remove**: Remove accounts that you no longer need to track.
+  - **Hotkey**: while row is highlighted, press 'delete' to start deletion.
 - **Update**: Keep your account list up-to-date with easy update options.
+  - **Hotkey**: while row is highlighted, press 'enter' to start edit.
+  - **Hotkey**: At anytime in the edit dialog window, press 'enter' to save the changes.
+- **Appearance Mode**: defaults to system settings
 
 ### Screenshots
 
@@ -49,6 +54,8 @@ The Python Detailed List App comes with several key features:
 
 - [x] Add Changelog and update README.md
 - [x] Add GUI to List App
+- [ ] Add style for Update and Delete buttons
+- [ ] Add data encryption
 - [ ] Multi-language Support
     - [ ] Chinese
     - [ ] Spanish
@@ -69,7 +76,7 @@ Use this space to list resources you find helpful and would like to give credit 
 * [Malven's Grid Cheatsheet](https://grid.malven.co/)
 * [Img Shields](https://shields.io)
 * [Best-README-template](https://github.com/othneildrew/Best-README-Template)
-* [customTkinter](https://customtkinter.tomschimansky.com)
+* [CustomTkinter](https://customtkinter.tomschimansky.com)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
