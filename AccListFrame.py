@@ -1,7 +1,8 @@
 import customtkinter as ctk
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
-from tinydb import TinyDB, Query
+from tinydb import Query
+from DataBase import get_database
 
 class UpdateDialog(ctk.CTkToplevel):
     def __init__(self, parent, title, initial_values):
@@ -68,7 +69,7 @@ class AccListFrame(tk.Frame):
         # self.style.configure("Treeview", background="#333333", fieldbackground="#333333", bordercolor="#333333", borderwidth=0)
 
         self.tree = ttk.Treeview(self, columns=('Delete', 'Id', 'Username', 'Password', 'Type', 'Status'), show='headings',)
-        self.db = TinyDB('ListAppDB.json')
+        self.db = get_database()
         self.create_table()
 
         self.tree.pack(expand=True, fill='both')

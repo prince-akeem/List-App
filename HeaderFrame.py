@@ -1,6 +1,6 @@
 import customtkinter
-from tinydb import TinyDB
 import threading
+from DataBase import get_database
 
 class MenuFrame(customtkinter.CTkFrame):
     def __init__(self, master, list_frame, **kwargs):
@@ -63,7 +63,7 @@ class MenuFrame(customtkinter.CTkFrame):
             return
 
         # Proceed with database insertion if all checks pass
-        db = TinyDB('ListAppDB.json')
+        db = get_database()
         # new_id = len(db.all()) + 1
         existing_ids = {item['Id'] for item in db.all()}
         new_id = 1

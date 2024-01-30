@@ -1,6 +1,8 @@
+import sys
 import customtkinter
 from PIL import Image
 import webbrowser
+import os
 
 class FooterFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
@@ -34,10 +36,20 @@ class FooterFrame(customtkinter.CTkFrame):
         def open_link():
             webbrowser.open(url)
 
+        def resourcePath(relativePath):
+            """ Get absolute path to resource, works for dev and for PyInstaller """
+            try:
+                # PyInstaller creates a temp folder and stores path in _MEIPASS
+                basePath = sys._MEIPASS
+            except Exception:
+                basePath = os.path.abspath(".")
+
+            return os.path.join(basePath, relativePath)
+
         parent_bg_color = parent.cget("bg_color")
 
-        icon_image = customtkinter.CTkImage(light_image=Image.open(icon_path),
-                                            dark_image=Image.open(icon_path),
+        icon_image = customtkinter.CTkImage(light_image=Image.open(resourcePath(icon_path)),
+                                            dark_image=Image.open(resourcePath(icon_path)),
                                             size=(30, 30))
         icon_button = customtkinter.CTkButton(parent, image=icon_image, text=name, command=open_link,
                                               fg_color=parent_bg_color, bg_color=parent_bg_color,
